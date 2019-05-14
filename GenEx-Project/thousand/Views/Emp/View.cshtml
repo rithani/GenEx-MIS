@@ -1,0 +1,82 @@
+﻿
+@model IEnumerable<thousand.Models.Sale>
+
+@using GridMvc.Html
+@{
+    ViewBag.Title = "Gridview";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />
+    <script src="@Url.Content("~/Scripts/jquery-1.9.1.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/gridmvc.min.js")"></script>
+    https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js
+    https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css
+    <title>Index</title>
+</head>
+
+<body>
+    <h1>Grid.MVC</h1>
+    <hr />
+    <div class="medium_field_container" style="width:200px !important; margin-left:10px">
+        <div class="form_label_container">
+            <label class="form_caption">&nbsp;</label>
+
+        </div>
+
+
+        <div class="selectBoxContainer">
+            <input type="text" id="txtvalue" name="firstname">
+            <button type="button" class="btn btn-primary save1" id="bttnsearch" onclick="loadDoc()">Search <span class="glyphicon glyphicon-search"></span></button>
+
+        </div>
+    </div>
+    <div class="display" id="example" style="width:100%">
+        <div style="width:500px;" class="table1">
+            @Html.Grid(Model).Columns(columns =>
+                                                                                     {
+                                                                                         columns.Add(c => c.Region).Titled("Region");
+                                                                                         columns.Add(c => c.Country).Titled("Country").Filterable(true);
+                                                                                         columns.Add(c => c.ItemType).Titled("SalesChannel");
+                                                                                         columns.Add(c => c.OrderPriority).Titled("OrderPriority");
+                                                                                         columns.Add(c => c.OrderDate).Titled("OrderDate");
+                                                                                         columns.Add(c => c.OrderId).Titled("OrderId");
+                                                                                         columns.Add(c => c.Shipdate).Titled("Shipdate");
+                                                                                         columns.Add(c => c.UnitsSold).Titled("UnitsSold");
+                                                                                         columns.Add(c => c.UnitPrice).Titled("UnitPrice");
+                                                                                         columns.Add(c => c.UnitCost).Titled("UnitCost");
+                                                                                         columns.Add(c => c.TotalRevenue).Titled("TotalRevenue");
+                                                                                         columns.Add(c => c.TotalCost).Titled("TotalCost");
+                                                                                         columns.Add(c => c.TotalProfit).Titled("TotalProfit");
+
+                                                                                     }).WithPaging(100).Sortable(true)
+        </div>
+        <script >
+            $(document).ready(function () {
+                $('#example').DataTable();
+            });
+        </script>
+
+
+
+
+
+
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
